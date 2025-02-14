@@ -6,6 +6,24 @@ __pycache__/
 # C extensions
 *.so
 
+# Игнорирование виртуального окружения
+venv/
+.env
+*.pyc
+__pycache__/
+
+# Игнорирование зависимостей
+Pipfile
+Pipfile.lock
+requirements.txt
+
+# Логи и артефакты сборки
+logs/
+*.log
+dist/
+build/
+*.egg-info/
+
 # Distribution / packaging
 .Python
 build/
