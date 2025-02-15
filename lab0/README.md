@@ -33,5 +33,67 @@
 Сервер (Backend): Обрабатывает запросы от клиента, взаимодействует с базой данных, выполняет аутентификацию.
 База данных: Хранит данные о пользователях, книгах и заказах.
 
-Схема API
-Список используемых технологий
+3. Схема API
+Аутентификация:
+POST /register
+Запрос:
+{
+  "email": "user@example.com",
+  "password": "securepassword",
+  "name": "User Name"
+}
+Ответ:
+{ "message": "User registered successfully" }
+
+POST /login
+Запрос:
+{
+  "email": "user@example.com",
+  "password": "securepassword"
+}
+Ответ:
+{ "token": "jwt_token_here" }
+
+Работа с книгами
+GET /books — получить список книг
+Ответ:
+[
+{ "id": 1, "title": "Book 1", "author": "Author A", "price": 19.99 },
+{ "id": 2, "title": "Book 2", "author": "Author B", "price": 24.99 }
+]
+
+GET /books/{id} — получить информацию о конкретной книге
+Ответ:
+{ "id": 1, "title": "Book 1", "author": "Author A", "price": 19.99, "description": "Book description here" }
+
+Работа с заказами
+POST /orders — создать заказ
+Запрос:
+{
+  "user_id": 1,
+  "items": [
+    { "book_id": 1, "quantity": 2 },
+    { "book_id": 3, "quantity": 1 }
+  ]
+}
+Ответ:
+{ "order_id": 123, "message": "Order created successfully" }
+GET /orders — получить историю заказов пользователя
+Ответ:
+[
+{ "id": 123, "total_price": 59.97, "status": "paid", "created_at": "2025-02-15" }
+]
+
+4. Список используемых технологий
+Frontend (шаблоны страниц и стили):
+  Bootstrap — CSS-фреймворк для стилизации и адаптивной верстки
+Backend (архитектура и серверная логика)
+  Flask — микрофреймворк для разработки веб-приложений на Python
+  Jinja2 — встроенный в Flask шаблонизатор для рендеринга HTML
+База данных и управление данными
+  MySQL — реляционная база данных
+  MySQL Workbench — инструмент для проектирования и администрирования базы данных
+Регистрация и авторизация
+  OAuth — безопасная аутентификация через сторонние сервисы
+  Flask-Login — управление сессиями пользователей в Flask
+  Flask-OAuthlib (или аналогичный) — интеграция с OAuth
